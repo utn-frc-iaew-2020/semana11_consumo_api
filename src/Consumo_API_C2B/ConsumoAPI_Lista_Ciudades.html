@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "https://uoi1izahv5.execute-api.us-east-1.amazonaws.com/Prod/ciudades",
+                contentType: "application/json; charset=utf-8"
+            })
+            .done(function (responseBody) {
+                $.each(responseBody, function(index, item) {
+                    $("#lista").append("<a>" + item.nombre + "</a><br>");
+                });
+                alert("Ejecuto Ok");
+            }).fail(function (msg) {
+                alert("Error");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="lista"></div>
+</body>
+</html>
